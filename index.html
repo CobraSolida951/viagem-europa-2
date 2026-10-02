@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#18251f">
+<title>Euro Trip 2026 ✈️</title>
+<style>
+:root{--bg:#f5f2ec;--paper:#fff;--ink:#1d2722;--muted:#6f756f;--green:#20372e;--gold:#c89b55;--rose:#a96356;--line:#e5ded3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit}.hero{min-height:570px;color:#fff;display:flex;align-items:end;padding:55px 7%;background:linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,.05)),url("https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=2000&q=88") center/cover}
+.hero-inner{max-width:900px}.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:13px;font-weight:800}.hero h1{font-family:Georgia,serif;font-size:clamp(50px,9vw,100px);line-height:.9;margin:14px 0}.hero p{font-size:clamp(17px,2.5vw,24px);max-width:780px}.pill{display:inline-block;padding:9px 14px;border-radius:99px;background:rgba(255,255,255,.17);backdrop-filter:blur(10px);margin:4px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;gap:5px;padding:9px 4%;overflow:auto;white-space:nowrap}
+nav button{border:0;background:transparent;padding:9px 12px;border-radius:20px;cursor:pointer;color:var(--muted);font-weight:750}nav button.active,nav button:hover{background:#e9eee9;color:var(--green)}
+main{max-width:1220px;margin:auto;padding:28px 5% 80px}.section{margin:35px 0}.section-title{font-family:Georgia,serif;font-size:35px;margin:0 0 15px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:21px;box-shadow:0 8px 35px rgba(30,35,30,.05)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#f8f5ef;border-radius:15px;padding:15px}.stat b{display:block;font-size:25px;color:var(--green)}
+.route{display:flex;align-items:center;gap:8px;overflow:auto;padding:10px 0}.city{min-width:max-content;background:var(--green);color:white;padding:10px 14px;border-radius:99px}.arrow{color:var(--gold);font-weight:900}
+.day{display:none}.day.active{display:block}.daytop{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px}.photo{height:310px;border-radius:20px;background-size:cover;background-position:center}.day h2{font-family:Georgia,serif;font-size:38px;margin:5px 0}.date{color:var(--rose);font-weight:850;text-transform:uppercase;letter-spacing:.06em}.weather{background:#eef4f0}.weather-big{font-size:35px;font-weight:850;color:var(--green)}.weather-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}.wday{padding:9px;background:white;border-radius:12px;text-align:center;font-size:12px}.wday b{display:block;font-size:18px}
+.timeline{display:grid;gap:0}.stop{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}.stop:last-child{border-bottom:0}.time{font-weight:900;color:var(--rose)}.stop h3{margin:0 0 5px}.stop p{margin:4px 0;color:var(--muted);line-height:1.5}.actions{margin-top:8px}.actions a{display:inline-block;text-decoration:none;color:#5c4236;background:#f2ebe4;padding:7px 10px;border-radius:10px;font-size:12px;font-weight:750;margin:4px 5px 0 0}
+.badge{display:inline-block;background:#edf0ea;color:var(--green);padding:6px 9px;border-radius:99px;font-size:12px;font-weight:800;margin:3px}
+.check label{display:block;padding:10px 4px;border-bottom:1px solid var(--line)}.check input{margin-right:10px}
+table{width:100%;border-collapse:collapse}td,th{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--green)}
+footer{background:var(--green);color:#dce4df;text-align:center;padding:35px}
+.small{font-size:13px;color:var(--muted)}.notice{border-left:4px solid var(--gold);padding:13px 15px;background:#fbf7ef;border-radius:8px}
+@media(max-width:800px){.grid,.daytop{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.weather-grid{grid-template-columns:repeat(2,1fr)}.photo{height:240px}.stop{grid-template-columns:65px 1fr}}
+.wnow{font-size:13px;margin:6px 0 8px}.wlabel{font-size:12px;font-weight:700;color:var(--rose,#a33);margin-top:6px}.wupd{font-size:11px;opacity:.7;margin-top:8px}.wday.sel{outline:2px solid var(--green,#2a6)}.cur{display:none;margin-top:10px;background:#fbf3e6;border-radius:12px;padding:10px 14px;font-size:14px}.cur.open{display:block}.cur p{margin:6px 0;color:#5c4236}.cur b{display:block;color:var(--rose,#a33)}.rbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.rbar select{padding:8px 10px;border-radius:10px;border:1px solid #d9cbb8;background:#fff;font:inherit;font-size:14px}.fbtn{padding:8px 12px;border-radius:999px;border:1px solid #d9cbb8;background:#fff;text-decoration:none;color:inherit;font-size:14px}.fbtn.on{background:var(--green,#2a6);color:#fff;border-color:transparent}</style>
+</head>
+<body>
+<header class="hero">
+<div class="hero-inner">
+<div class="eyebrow">Roadshow • Outubro 2026</div>
+<h1>Euro Trip<br>2026</h1>
+<p>Uma viagem em família pela Europa: Espanha, Portugal, França, Holanda e novamente Espanha.</p>
+<div><span class="pill">02 → 19 OUT</span><span class="pill">18 dias</span><span class="pill">✈️ 🚆 🚇 🚗 🚶</span></div>
+</div>
+</header>
+
+<nav id="nav"></nav>
+<main>
+<section class="section">
+<div class="card">
+<h2 class="section-title">Nosso percurso</h2>
+<div class="route" id="route"></div>
+<p class="small">Toque em qualquer dia no menu acima para abrir o roteiro detalhado.</p>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">🍽️ Restaurantes perto de mim</h2>
+<div class="card">
+<div class="rbar">
+<select id="rOrigin" onchange="loadRest()"><option value="gps">📍 Minha localização</option></select>
+<select id="rRadius" onchange="loadRest()"><option value="500">até 500 m</option><option value="1000" selected>até 1 km</option><option value="2000">até 2 km</option><option value="5000">até 5 km</option></select>
+<a href="#" class="fbtn" onclick="loadRest();return false">🔄 Buscar</a>
+</div>
+<div class="rbar" id="rSort">
+<a href="#" class="fbtn on" data-k="dist" onclick="setSort('dist');return false">📏 Mais perto</a>
+<a href="#" class="fbtn" data-k="cheap" onclick="setSort('cheap');return false">💶 Mais barato</a>
+<a href="#" class="fbtn" data-k="quality" onclick="setSort('quality');return false">⭐ Melhor qualidade</a>
+</div>
+<div id="restList" class="small">Escolha a origem e clique em Buscar.</div>
+<div id="restNote" class="wupd"></div>
+</div>
+</section>
+
+<section class="section grid">
+<div class="card">
+<h2 class="section-title">📌 Resumo</h2>
+<div class="stats">
+<div class="stat"><b>18</b>dias</div><div class="stat"><b>9+</b>destinos</div><div class="stat"><b>5</b>países</div><div class="stat"><b>€500–520</b>alimentação/adulto</div>
+</div>
+<div class="notice" style="margin-top:16px">O roteiro-base considera €30/dia por adulto para alimentação simples, totalizando aproximadamente €500–520 por adulto. </div>
+</div>
+<div class="card">
+<h2 class="section-title">🌦️ Previsão</h2>
+<div id="globalWeather">Escolha um dia para carregar a previsão atualizada.</div>
+<p class="small">Clima atual e previsão via Open-Meteo, atualizados automaticamente a cada 10 minutos. Para dias além de 16 dias no futuro, mostra a referência do mesmo dia no ano anterior.</p>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">🗓️ Roteiro dia a dia</h2>
+<div id="days"></div>
+</section>
+
+<section class="section grid">
+<div class="card">
+<h2 class="section-title">🎒 Checklist</h2>
+<div class="check" id="checklist"></div>
+</div>
+<div class="card">
+<h2 class="section-title">💶 Ingressos</h2>
+<div id="fxInfo" class="wupd" style="margin:0 0 8px">Carregando cotação...</div><table><thead><tr><th>Experiência</th><th>€ / adulto</th><th>R$ / adulto</th></tr></thead><tbody id="costs"></tbody></table>
+</div>
+</section>
+
+<section class="section">
+<div class="card">
+<h2 class="section-title">🏨 Hospedagens</h2>
+<table><thead><tr><th>Cidade</th><th>Período</th><th>Hospedagem</th></tr></thead><tbody id="hotels"></tbody></table>
+</div>
+</section>
+</main>
+<footer>Euro Trip 2026 • roteiro pessoal • informações de transporte, horários e preços podem sofrer alterações.</footer>
+
+<script>
+const places={
+"Madri":[40.4168,-3.7038],"Toledo":[39.8628,-4.0273],"Lisboa":[38.7223,-9.1393],"Sintra":[38.8029,-9.3817],
+"Porto":[41.1579,-8.6291],"Aveiro":[40.6405,-8.6538],"Paris":[48.8566,2.3522],"Amsterdam":[52.3676,4.9041],
+"Barcelona":[41.3874,2.1686],"Segóvia":[40.9429,-4.1088],"Montserrat":[41.5933,1.8370]
+};
+const days=[
+["03/10","Madri","Madri • Centro histórico + pôr do sol","Madri",[
+["Manhã","Rio Manzanares → Puente de Toledo","Caminhada pelo rio e metrô Usera L6 → Legazpi L3 → Sol."],
+["10:00","Puerta del Sol","Marco zero da cidade."],["11:00","Plaza Mayor • Plaza de la Villa • Mercado de San Miguel","Sequência ideal a pé."],
+["14:00","Catedral de la Almudena • Palácio Real • Plaza de Oriente","Coração histórico de Madri."],["18:30","Templo de Debod","Pôr do sol e vista panorâmica."],["Noite","Gran Vía • Plaza de España • Círculo de Bellas Artes","Rooftop opcional."]]],
+["04/10","Toledo","Toledo • cidade medieval","Toledo",[["09:15","Madrid-Atocha → Toledo","Renfe AVANT; táxi/ônibus da estação para Puerta Bisagra."],["10:15","Puerta Bisagra → Cristo de la Luz","Uma das mesquitas mais antigas preservadas da Espanha."],["11:30","Zocodover → Alcázar → Catedral Primada","Prove carcamusas e mazapán."],["14:30","Santo Tomé → Santa Maria la Blanca → San Juan de los Reyes","Santo Tomé abriga a obra de El Greco."],["17:00","Mirador del Valle","Vista da cidade cercada pelo Tejo."],["18:45","Toledo → Madrid","Renfe AVANT."]]],
+["05/10","Madri → Lisboa","Madri • Retiro → Lisboa","Madri",[["Manhã","Atocha • Paseo del Prado • Retiro","Passeio externo pelos jardins e arquitetura."],["11:30","Puerta de Alcalá • Cibeles","Fotos e caminhada."],["16:00","Hotel → aeroporto","Usera L6 → Nuevos Ministerios → L8."],["20:10","Voo Madrid → Lisboa","TAP TP1019."]]],
+["06/10","Lisboa","Lisboa • Baixa, Alfama e miradouros","Lisboa",[["Manhã","Parque Eduardo VII → Avenida da Liberdade → Rossio","Viva Viagem 24h por adulto; Bella não paga, conforme roteiro."],["11:00","Rua Augusta → Praça do Comércio","Percurso a pé."],["13:00","Sé → Santa Luzia → Castelo de São Jorge → Alfama","Prepare-se para ladeiras."],["16:00","Chiado → Santa Justa → Carmo","Ruínas góticas."],["Pôr do sol","Bairro Alto → São Pedro de Alcântara","Miradouro."]]],
+["07/10","Belém","Belém + LX Factory","Lisboa",[["Manhã","Cais do Sodré → Belém","Linha Verde + comboio de Cascais; ~30–35 min."],["10:00","Jerónimos • Pastéis de Belém","Confeitaria histórica fundada em 1837."],["12:00","Padrão → Torre de Belém","Caminhada pela margem do Tejo."],["15:00","MAAT → Ponte 25 de Abril → LX Factory","Arte urbana e ambiente criativo."],["Noite","Belém → Cais do Sodré → hospedagem","Comboio + metrô."]]],
+["08/10","Sintra","Sintra • Regaleira + Pena","Sintra",[["07:30","Rossio → Sintra","Comboio; ~40 min."],["09:00","Quinta da Regaleira","Priorize o Poço Iniciático."],["11:30","Centro histórico de Sintra","Palácio Nacional e doces típicos."],["13:30","Palácio da Pena","Linha 434."],["17:30","Sintra → Rossio","Comboio de volta."]]],
+["09/10","Porto","Porto • centro histórico","Porto",[["07:30","Lisboa Oriente → Porto Campanhã","FlixBus; duração indicada 3h15."],["Manhã","Sé → São Bento → Capela das Almas → Aliados","São Bento é famoso pelos azulejos."],["Tarde","Clérigos → Lello → Carmo → Palácio de Cristal","Percurso a pé."],["Pôr do sol","Vitória → Ponte Luís I → Gaia → Ribeira","Cruze a ponte pela parte superior."],["Noite","Ribeira / Rua das Flores / Gaia","Jantar e passeio."]]],
+["10/10","Aveiro","Aveiro + Costa Nova + Praia da Barra","Aveiro",[["09:00","Retirar carro na SIXT","Avenida da Boavista, Porto."],["10:30","Aveiro","Moliceiro, Rossio, Beira-Mar e Mercado do Peixe."],["Almoço","Praça do Peixe","Prove ovos moles."],["14:00","Costa Nova","Casas listradas, calçadão e praia."],["16:00","Praia da Barra","Farol e calçadão."],["Noite","Porto","Ribeira e Gaia iluminadas."]]],
+["11/10","Paris","Porto → Paris • primeiro giro","Paris",[["05:30","Devolver carro no aeroporto do Porto","SIXT."],["08:30","Porto → Paris Orly","Transavia TO7601."],["Tarde","Notre-Dame → Pont Neuf → Quartier Latin → Louvre externo","Pirâmide invertida pode ser vista gratuitamente no Carrousel."],["Fim de tarde","Pont des Arts → Tuileries → Concorde → Champs-Élysées → Arco do Triunfo","Passeio clássico."],["Noite","Torre Eiffel","Metrô Trocadéro L6 → Nation → L11 → Mairie des Lilas."]]],
+["12/10","Disneyland","Disneyland • 1 dia / 2 parques","Paris",[["Manhã","Les Lilas → Châtelet","Metrô L11."],["Depois","RER A → Marne-la-Vallée/Chessy","~40 min de trem."],["Dia inteiro","Disneyland Paris","Ingresso comprado: 1 dia / 2 parques."],["Noite","RER A → Les Lilas","Retorno."]]],
+["13/10","Paris","Montmartre + Ópera + Trocadéro","Paris",[["Manhã","Anvers → Sacré-Cœur → Place du Tertre","Montmartre."],["Tarde","Moulin Rouge → Ópera Garnier → Galeries Lafayette","Terraço gratuito."],["Fim de tarde","Vendôme → Alexandre III → Invalides","A ponte foi inaugurada em 1900."],["Pôr do sol","Trocadéro","Vista da Torre Eiffel."]]],
+["14/10","Amsterdam","Paris → Amsterdam • canais e Jordaan","Amsterdam",[["06:30","Hospedagem → Gare du Nord","Metrô L4 ou Uber."],["07:44","Paris Nord → Amsterdam Centraal","Eurostar 9309."],["11:00","Centraal → Dam → Begijnhof → Jordaan","Caminhada."],["13:00","Winkel 43 → Casa de Anne Frank","Ingresso da Casa de Anne Frank: somente NATH, conforme roteiro."],["17:30","Passeio de barco","Mokumboot."],["Noite","Nine Streets → Red Light District → Nieuwmarkt","Volta a pé ~1 km."]]],
+["15/10","Amsterdam → Barcelona","Amsterdam • De Pijp + Barcelona","Amsterdam",[["Manhã","Bloemenmarkt → De Pijp → Albert Cuyp","Tram."],["12:00","De Gooyer • Heineken • Vondelpark","Bella não entra na Heineken Experience."],["16:00","Centraal → Schiphol","Trem 15–20 min."],["18:35","Amsterdam → Barcelona","Vueling VY8307."],["22:00","Aeroporto → hotel","Táxi ~20–25 min."]]],
+["16/10","Barcelona","Barcelona • Gótico + Montjuïc","Barcelona",[["Manhã","Las Ramblas → Boqueria → Gótico → Catedral","Caminhada."],["Tarde","Sant Jaume → Port Vell → Barceloneta","Porto e praia."],["Fim de tarde","Funicular → Montjuïc","Castelo e miradouros."],["21:00","Fonte Mágica","Show de luzes e música, conforme roteiro."]]],
+["17/10","Montserrat","Montserrat + Sagrada Família","Montserrat",[["07:00","Barcelona → Monistrol de Montserrat","Metrô L3 + R5 (~1h)."],["09:30","Mosteiro de Montserrat","Casaco recomendado/necessário no roteiro."],["11:00","Funicular de Sant Joan","Mirantes e caminhada."],["13:30","Retorno","Cremalheira ou Aeri."],["16:00","Sagrada Família","Ingresso comprado."],["Depois","Hospital de Sant Pau","~8 min a pé da Sagrada Família."]]],
+["18/10","Barcelona → Madri","Gaudí + Born + trem para Madri","Barcelona",[["09:00","Paral·lel → Park Güell","Metrô L3; entrada comprada."],["11:30","Passeig de Gràcia → Casa Batlló → La Pedrera → Catalunya","Gaudí pelo exterior."],["14:00","Arc de Triomf → Ciutadella","Lago e cascata."],["15:30","El Born → Santa Maria del Mar → Museu Picasso externo","Passeio."],["17:00","Plaça d'Espanya → hotel → Sants","Malas."],["19:25","Barcelona-Sants → Madrid Atocha","AVE 03190."]]],
+["19/10","Segóvia / retorno","Segóvia para parte do grupo + voos","Segóvia",[["Manhã","Madrid → Segóvia","AVE desde Chamartín; ~28–30 min até Segovia-Guiomar."],["Manhã","Aqueduto → Plaza Mayor → Catedral → Alcázar","Centro histórico."],["13:25/13:35","Madrid → Casablanca","Voos de retorno de parte do grupo."],["Noite","Casablanca → São Paulo / Madrid → São Paulo","Conforme reservas."]]]
+];
+
+const photos={
+Madri:"https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1600&q=85",
+Toledo:"https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=1600&q=85",
+Lisboa:"https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1600&q=85",
+Sintra:"https://images.unsplash.com/photo-1580502304784-8985b7eb7260?auto=format&fit=crop&w=1600&q=85",
+Porto:"https://images.unsplash.com/photo-1555881400-12f0d7f1d4b1?auto=format&fit=crop&w=1600&q=85",
+Aveiro:"https://images.unsplash.com/photo-1583060812070-3d9d8a6b0e37?auto=format&fit=crop&w=1600&q=85",
+Paris:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1600&q=85",
+Amsterdam:"https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1600&q=85",
+Barcelona:"https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1600&q=85",
+Montserrat:"https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1600&q=85",
+Segóvia:"https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=1600&q=85"
+};
+const nav=document.getElementById("nav"), daysEl=document.getElementById("days");
+nav.innerHTML=days.map((d,i)=>`<button class="${i===0?'active':''}" onclick="showDay(${i})">${d[0]} · ${d[1]}</button>`).join("");
+document.getElementById("route").innerHTML=["🇪🇸 Madri","Toledo","🇵🇹 Lisboa","Sintra","Porto","Aveiro","🇫🇷 Paris","🇳🇱 Amsterdam","🇪🇸 Barcelona","Madri"].map((x,i)=>`${i?'<span class="arrow">→</span>':''}<span class="city">${x}</span>`).join("");
+
+function maps(q){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`}
+const TRIP_YEAR=2026, REFRESH_MS=10*60*1000, FORECAST_DAYS=16;
+let activeDay=0;
+const wcache={};
+function wInfo(c){
+ if(c===0)return["☀️","Céu limpo"];if(c===1)return["🌤️","Predomina sol"];if(c===2)return["⛅","Parcialmente nublado"];if(c===3)return["☁️","Nublado"];
+ if(c===45||c===48)return["🌫️","Neblina"];if(c>=51&&c<=57)return["🌦️","Garoa"];if(c>=61&&c<=67)return["🌧️","Chuva"];
+ if(c>=71&&c<=77)return["❄️","Neve"];if(c>=80&&c<=82)return["🌦️","Pancadas de chuva"];if(c===85||c===86)return["🌨️","Pancadas de neve"];
+ if(c>=95)return["⛈️","Tempestade"];return["🌡️","—"];
+}
+function maps(q){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`}
+function tripIso(i){const [dd,mm]=days[i][0].split("/");return `${TRIP_YEAR}-${mm}-${dd}`}
+function fmt(iso){return iso.slice(8,10)+"/"+iso.slice(5,7)}
+function hhmm(t){return new Date(t).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}
+async function getJson(url){
+ const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),12000);
+ try{const r=await fetch(url,{signal:ctl.signal,cache:"no-store"});if(!r.ok)throw new Error("HTTP "+r.status);return await r.json()}
+ finally{clearTimeout(to)}
+}
+async function getForecast(place,force){
+ const c=places[place]; if(!c)throw new Error("Cidade sem coordenadas");
+ const w=wcache[place];
+ if(!force&&w&&Date.now()-w.t<REFRESH_MS)return w;
+ const url=`https://api.open-meteo.com/v1/forecast?latitude=${c[0]}&longitude=${c[1]}`+
+  `&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m`+
+  `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max`+
+  `&timezone=auto&forecast_days=${FORECAST_DAYS}`;
+ const x=await getJson(url);
+ return wcache[place]={t:Date.now(),data:x};
+}
+async function getArchive(place,iso){
+ const key="arc-"+place+iso,w=wcache[key]; if(w)return w.data;
+ const c=places[place],y=TRIP_YEAR-1,d=`${y}${iso.slice(4)}`;
+ const x=await getJson(`https://archive-api.open-meteo.com/v1/archive?latitude=${c[0]}&longitude=${c[1]}&start_date=${d}&end_date=${d}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`);
+ wcache[key]={t:Date.now(),data:x}; return x;
+}
+async function loadWeather(i,force){
+ const el=document.getElementById("weather-day-"+i); if(!el)return;
+ const place=days[i][3], iso=tripIso(i);
+ if(!el.dataset.loaded)el.innerHTML="Carregando...";
+ try{
+  const {data:x,t}=await getForecast(place,force);
+  const idx=x.daily.time.indexOf(iso), cur=x.current, ci=wInfo(cur.weather_code);
+  let html=`<div class="wnow">Agora em ${place}: <b>${Math.round(cur.temperature_2m)}°C</b> ${ci[0]} ${ci[1]} · sensação ${Math.round(cur.apparent_temperature)}° · 💧${cur.relative_humidity_2m}% · 💨${Math.round(cur.wind_speed_10m)} km/h</div>`;
+  if(idx>=0){
+   const inf=wInfo(x.daily.weather_code[idx]);
+   html+=`<div class="wlabel">Previsão para ${fmt(iso)} — ${inf[0]} ${inf[1]}</div><div class="weather-big">${Math.round(x.daily.temperature_2m_max[idx])}° / ${Math.round(x.daily.temperature_2m_min[idx])}°</div>`+
+   `<div class="weather-grid">${x.daily.time.slice(idx,idx+4).map((d,k)=>{const j=idx+k;return `<div class="wday${k===0?" sel":""}"><b>${wInfo(x.daily.weather_code[j])[0]}</b>${fmt(d)}<br>${Math.round(x.daily.temperature_2m_min[j])}–${Math.round(x.daily.temperature_2m_max[j])}°<br>💧${x.daily.precipitation_probability_max[j]??0}%</div>`}).join("")}</div>`;
+  }else{
+   const last=x.daily.time[x.daily.time.length-1], avail=new Date(iso+"T12:00:00");avail.setDate(avail.getDate()-(FORECAST_DAYS-1));
+   html+=`<div class="wlabel">Previsão de ${fmt(iso)} ainda indisponível (vai até ${fmt(last)}). Deve aparecer a partir de ${avail.toLocaleDateString("pt-BR")}.</div>`;
+   try{
+    const a=await getArchive(place,iso), ai=wInfo(a.daily.weather_code[0]);
+    html+=`<div class="wlabel">Referência: mesmo dia em ${TRIP_YEAR-1}</div><div class="weather-big">${Math.round(a.daily.temperature_2m_max[0])}° / ${Math.round(a.daily.temperature_2m_min[0])}°</div><div class="small">${ai[0]} ${ai[1]} · chuva ${a.daily.precipitation_sum[0]} mm</div>`;
+   }catch(e){}
+  }
+  html+=`<div class="wupd">Atualizado às ${hhmm(t)} · <a href="#" onclick="loadWeather(${i},true);loadGlobal(true);return false">🔄 atualizar agora</a></div>`;
+  el.innerHTML=html; el.dataset.loaded="1";
+ }catch(e){
+  el.innerHTML=`Não foi possível carregar a previsão (${e.message}). Verifique a internet. <a href="#" onclick="loadWeather(${i},true);return false">Tentar de novo</a>`;
+ }
+}
+async function loadGlobal(force){
+ const el=document.getElementById("globalWeather"); if(!el)return;
+ const names=Object.keys(places);
+ try{
+  const g=wcache.__global;
+  let list;
+  if(!force&&g&&Date.now()-g.t<REFRESH_MS)list=g.data;
+  else{
+   const r=await getJson(`https://api.open-meteo.com/v1/forecast?latitude=${names.map(n=>places[n][0]).join(",")}&longitude=${names.map(n=>places[n][1]).join(",")}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1`);
+   list=Array.isArray(r)?r:[r]; wcache.__global={t:Date.now(),data:list};
+  }
+  el.innerHTML=`<div class="weather-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))">${names.map((n,k)=>{const x=list[k];return `<div class="wday"><b>${wInfo(x.current.weather_code)[0]}</b>${n}<br>${Math.round(x.current.temperature_2m)}°C agora<br>${Math.round(x.daily.temperature_2m_min[0])}–${Math.round(x.daily.temperature_2m_max[0])}° hoje</div>`}).join("")}</div><div class="wupd">Atualizado às ${hhmm(wcache.__global.t)}</div>`;
+ }catch(e){el.innerHTML="Não foi possível carregar o clima das cidades agora."}
+}
+function startAutoRefresh(){
+ const tick=()=>{loadWeather(activeDay,true);loadGlobal(true)};
+ setInterval(tick,REFRESH_MS);
+ document.addEventListener("visibilitychange",()=>{if(!document.hidden)tick()});
+ window.addEventListener("online",tick);
+}
+const CUR={
+"Rio Manzanares":"O projeto Madrid Río enterrou a rodovia M-30 e transformou as margens do rio em parques, ciclovias e áreas de lazer.",
+"Puente de Toledo":"Ponte barroca de 1732, obra de Pedro de Ribera, decorada com estátuas de Santo Isidro e Santa Maria de la Cabeza, padroeiros de Madri.",
+"Puerta del Sol":"Uma placa no chão marca o Km 0 das estradas radiais da Espanha. No réveillon, os espanhóis comem 12 uvas ao ritmo do relógio daqui.",
+"Plaza Mayor@Madri":"Do séc. XVII, já foi palco de touradas, coroações e julgamentos da Inquisição. Suas varandas eram camarotes para assistir aos eventos.",
+"Plaza de la Villa":"Foi sede do governo de Madri por séculos e reúne alguns dos prédios civis mais antigos da cidade.",
+"Mercado de San Miguel":"Mercado de ferro e vidro de 1916, hoje um mercado gastronômico de tapas, ostras e petiscos.",
+"Catedral de la Almudena":"Começou a ser construída no fim do séc. XIX e só foi consagrada em 1993, pelo Papa João Paulo II. O nome vem do árabe para cidadela.",
+"Palácio Real":"É um dos maiores palácios reais da Europa, com mais de 3 mil salas. A família real não mora aqui, só usa em cerimônias.",
+"Plaza de Oriente":"Cercada de estátuas de reis. Diz a tradição que Galileu deu palpites para equilibrar a estátua equestre de Filipe IV.",
+"Templo de Debod":"Templo egípcio de cerca de 2.200 anos, dado à Espanha em 1968 e remontado pedra por pedra. O pôr do sol aqui é famoso.",
+"Gran Vía":"Aberta no início do séc. XX, é chamada de a Broadway madrilena, por causa dos teatros e cinemas.",
+"Plaza de España":"Tem o monumento a Cervantes, com Dom Quixote e Sancho Pança olhando para a praça.",
+"Círculo de Bellas Artes":"O prédio de 1926 tem um terraço com vista 360° do centro de Madri, um dos mirantes mais concorridos.",
+"Puerta Bisagra":"Principal entrada da cidade murada, do séc. XVI, com o grande brasão imperial de Carlos V.",
+"Cristo de la Luz":"Antiga mesquita de 999, uma das mais antigas de Toledo. Diz a lenda que o cavalo do rei Afonso VI se ajoelhou aqui.",
+"Zocodover":"O nome vem do árabe suq ad-dawabb, mercado de animais. Sempre foi o coração social de Toledo.",
+"Alcázar@Toledo":"A fortaleza sofreu um cerco famoso na Guerra Civil Espanhola (1936) e hoje abriga o Museu do Exército.",
+"Catedral Primada":"Gótica, levou mais de dois séculos e meio para ficar pronta (1226–1493). A sacristia guarda obras de El Greco.",
+"Santo Tomé":"Guarda O Enterro do Conde de Orgaz, obra-prima de El Greco pintada no fim do séc. XVI.",
+"Santa Maria la Blanca":"Antiga sinagoga com arcos em ferradura de estilo mudéjar, símbolo da convivência de três religiões em Toledo.",
+"San Juan de los Reyes":"Mandado construir pelos Reis Católicos. Na fachada estão penduradas correntes de cristãos libertados do cativeiro.",
+"Mirador del Valle":"Do outro lado do rio Tejo, mostra a cidade no alto, cercada pelo rio, a vista clássica de Toledo.",
+"Atocha":"A estação tem um jardim tropical interno, com centenas de plantas e até tartarugas no laguinho.",
+"Paseo del Prado":"Bulevar do séc. XVIII que, com o Retiro, faz parte da Paisagem da Luz, Patrimônio Mundial da UNESCO.",
+"Retiro":"Antigo jardim dos reis. Tem o Palácio de Cristal e uma das raras estátuas do mundo dedicadas ao Diabo, o Anjo Caído.",
+"Puerta de Alcalá":"Arco de 1778 encomendado por Carlos III, anterior ao Arco do Triunfo de Paris.",
+"Cibeles":"A fonte mostra a deusa Cibele numa carruagem puxada por leões. É onde o Real Madrid comemora seus títulos.",
+"Parque Eduardo VII":"Nome em homenagem ao rei britânico que visitou Portugal em 1903. Tem uma estufa e vista até o Tejo.",
+"Avenida da Liberdade":"Inspirada nos Champs-Élysées, foi aberta em 1886 e hoje concentra lojas de luxo.",
+"Rossio":"A calçada portuguesa em ondas preto e branco é uma das marcas da praça, palco de eventos desde a Idade Média.",
+"Rua Augusta":"Rua pedonal que termina no Arco da Rua Augusta, com mirante no topo.",
+"Praça do Comércio":"Ocupa o local do palácio real, destruído pelo terremoto de 1755. Foi reconstruída pelo Marquês de Pombal.",
+"Sé@Lisboa":"A catedral do séc. XII sobreviveu a vários terremotos. Santo António foi batizado aqui.",
+"Santa Luzia":"Mirante com azulejos e buganvílias, com vista para Alfama e o Tejo.",
+"Castelo de São Jorge":"Ocupado desde a época romana e mourisca. Hoje pavões passeiam livremente pelos jardins.",
+"Alfama":"Bairro mais antigo de Lisboa, sobreviveu ao terremoto de 1755 e é o berço do fado.",
+"Chiado":"Bairro literário. Em frente ao café A Brasileira há uma estátua de Fernando Pessoa sentado.",
+"Santa Justa":"Elevador neogótico de 1902, projetado por um discípulo de Eiffel, que leva ao Chiado.",
+"Carmo@Lisboa":"O Convento do Carmo está sem teto desde o terremoto de 1755 e hoje é um museu arqueológico a céu aberto.",
+"Bairro Alto":"Calmo de dia e boêmio à noite, com dezenas de barzinhos nas ruas estreitas.",
+"São Pedro de Alcântara":"Mirante com vista para o Castelo de São Jorge e a Baixa.",
+"Cais do Sodré":"Antiga zona de marinheiros, hoje uma área de bares, incluindo a famosa Pink Street.",
+"Belém":"Daqui partiam as caravelas da Era dos Descobrimentos. Reúne monumentos, museus e a confeitaria mais famosa do país.",
+"Jerónimos":"Mosteiro manuelino do séc. XVI, Patrimônio da UNESCO, com os túmulos de Vasco da Gama e Luís de Camões.",
+"Pastéis de Belém":"A receita é secreta desde 1837 e só poucos mestres a conhecem. Coma morno, com canela e açúcar.",
+"Padrão":"Monumento de 1960 a Henrique, o Navegador. No chão, um mapa-múndi marca as rotas dos descobrimentos.",
+"Torre de Belém":"Fortaleza do séc. XVI, Patrimônio da UNESCO. Tem um rinoceronte esculpido, inspirado no que foi enviado ao rei.",
+"MAAT":"Museu de fachada ondulada com azulejos 3D. Dá para subir no telhado e ver o Tejo.",
+"Ponte 25 de Abril":"Lembra a Golden Gate e foi inaugurada em 1966 com o nome de Ponte Salazar.",
+"LX Factory":"Antigo complexo têxtil transformado em polo de lojas, restaurantes e ateliês. Vale ver a livraria Ler Devagar.",
+"Quinta da Regaleira":"O Poço Iniciático tem 27 m, com escada em espiral de nove patamares e túneis que levam a grutas.",
+"Centro histórico de Sintra":"O Palácio Nacional tem duas enormes chaminés cônicas. Prove as queijadas e os travesseiros de Sintra.",
+"Palácio da Pena":"Palácio romântico do séc. XIX, amarelo e vermelho, no alto da serra. Foi residência de verão de D. Fernando II.",
+"Sé@Porto":"Uma das construções mais antigas do Porto (séc. XII), tem um mirante com vista para os telhados do centro.",
+"São Bento":"O saguão da estação tem cerca de 20 mil azulejos que retratam a história de Portugal.",
+"Capela das Almas":"A fachada de azulejos azuis, de 1929, tem quase 16 mil peças.",
+"Aliados":"Avenida do centro com a Câmara Municipal e prédios do início do séc. XX.",
+"Clérigos":"Torre barroca de cerca de 75 m e 225 degraus, com vista para toda a cidade.",
+"Lello":"Livraria de 1906 com escadaria vermelha. Diz-se que inspirou J. K. Rowling, que morou no Porto.",
+"Carmo@Porto":"A lateral da igreja é coberta de azulejos azuis (1912). Ao lado há uma das casas mais estreitas da cidade.",
+"Palácio de Cristal":"Os jardins têm pavões e um mirante para o Douro.",
+"Vitória":"Mirante com vista clássica da Ribeira e de Gaia.",
+"Ponte Luís I":"Ponte de ferro de dois andares, de 1886, projetada por um discípulo de Eiffel.",
+"Gaia":"Aqui ficam as caves onde o vinho do Porto envelhece, do outro lado do rio.",
+"Ribeira":"O centro histórico do Porto é Patrimônio da UNESCO desde 1996, com casas coloridas à beira do Douro.",
+"Rua das Flores":"Rua pedonal com casas de azulejos, lojinhas e a Igreja da Misericórdia.",
+"Aveiro":"Conhecida como a Veneza de Portugal, por causa dos canais e dos barcos moliceiros.",
+"Praça do Peixe":"Os ovos moles de Aveiro têm Indicação Geográfica Protegida na União Europeia.",
+"Costa Nova":"As casas listradas, os palheiros, eram abrigos de pescadores e viraram cartão-postal.",
+"Praia da Barra":"O Farol da Barra tem 62 m e é o mais alto de Portugal.",
+"Notre-Dame":"Reabriu em dezembro de 2024 após o incêndio de 2019. Na praça, uma placa marca o ponto zero das estradas da França.",
+"Pont Neuf":"Apesar do nome (ponte nova), é a ponte mais antiga de Paris ainda de pé, de 1607.",
+"Quartier Latin":"O nome vem do latim, que os estudantes da Sorbonne falavam na Idade Média.",
+"Louvre":"É o museu mais visitado do mundo. A pirâmide de vidro de I. M. Pei foi inaugurada em 1989.",
+"Pont des Arts":"Ficou famosa pelos cadeados do amor, retirados em 2015 pelo peso.",
+"Tuileries":"Jardim criado no séc. XVI a mando de Catarina de Médici, com cadeiras verdes para relaxar.",
+"Concorde":"O obelisco de Luxor tem cerca de 3.300 anos e foi presente do Egito. Antes ali ficava a guilhotina da Revolução.",
+"Champs-Élysées":"Uma das avenidas mais famosas do mundo, liga a Concorde ao Arco do Triunfo e é a chegada do Tour de France.",
+"Arco do Triunfo":"Encomendado por Napoleão em 1806, foi concluído só em 1836. Sob ele fica o Túmulo do Soldado Desconhecido.",
+"Torre Eiffel":"Foi inaugurada em 1889 e devia ser desmontada após 20 anos. No verão, o ferro dilata e ela cresce até 15 cm.",
+"Disneyland Paris":"Abriu em 1992 como Euro Disney. Sob o castelo da Bela Adormecida vive um dragão gigante.",
+"Sacré-Cœur":"A pedra travertino da basílica clareia com a chuva, por isso ela é tão branca. Foi concluída em 1914.",
+"Place du Tertre":"Praça de pintores e retratistas, no bairro onde viveram Picasso e outros artistas.",
+"Moulin Rouge":"Cabaré aberto em 1889, é considerado o berço do cancã.",
+"Ópera Garnier":"Inspirou O Fantasma da Ópera e tem mesmo um lago subterrâneo sob o prédio.",
+"Galeries Lafayette":"A cúpula de vidro art nouveau é de 1912. O terraço tem vista gratuita de Paris.",
+"Vendôme":"A coluna é revestida do bronze de canhões tomados por Napoleão na Batalha de Austerlitz.",
+"Alexandre III":"A ponte mais ornamentada de Paris foi feita para a Exposição Universal de 1900.",
+"Invalides":"Sob a cúpula dourada fica o túmulo de Napoleão.",
+"Trocadéro":"A esplanada tem a vista clássica da Torre Eiffel, ótima para fotos.",
+"Dam":"O nome Amsterdam vem de uma represa (dam) no rio Amstel, do séc. XIII.",
+"Begijnhof":"Pátio secreto de casas antigas, com uma casa de madeira de cerca de 1528, das poucas medievais que restam.",
+"Jordaan":"Antigo bairro operário, hoje charmoso, com canais, galerias e cafés.",
+"Winkel 43":"Famosa pela appeltaart (torta de maçã), considerada a melhor da cidade.",
+"Casa de Anne Frank":"Anne escreveu o diário escondida por mais de dois anos (1942–44) no anexo secreto.",
+"Passeio de barco":"Amsterdam tem mais de 100 km de canais e cerca de 1.500 pontes.",
+"Nine Streets":"Nove ruas entre canais, cheias de lojas independentes e cafés.",
+"Red Light District":"Fica em De Wallen, região mais antiga da cidade, onde está a Oude Kerk, do séc. XIV.",
+"Nieuwmarkt":"A Waag, do séc. XV, já foi portão da cidade e hoje é um café com aparência de castelo.",
+"Bloemenmarkt":"Mercado de flores flutuante, sobre barcas no canal Singel.",
+"De Pijp":"Bairro boêmio e multicultural, com cafés e restaurantes de várias cozinhas.",
+"Albert Cuyp":"Um dos maiores mercados de rua da Holanda. Prove as stroopwafels na hora.",
+"De Gooyer":"Moinho de 1725, o último de Amsterdam, ao lado de uma cervejaria artesanal.",
+"Heineken":"A cervejaria foi fundada em 1864. O prédio original virou museu interativo.",
+"Vondelpark":"Aberto em 1865, recebe milhões de visitantes por ano, ótimo para um piquenique.",
+"Las Ramblas":"Antes um riacho seco, o nome vem do árabe ramla (areia). Tem cerca de 1,2 km até o porto.",
+"Boqueria":"Mercado com origens no séc. XIII, um dos mais coloridos da Europa.",
+"Gótico":"O Barri Gòtic guarda ruínas da Barcino romana, a cidade que deu origem a Barcelona.",
+"Catedral@Barcelona":"No claustro vivem 13 gansos brancos, um para cada ano da mártir Santa Eulália.",
+"Sant Jaume":"A praça reúne a prefeitura e o governo da Catalunha, um de frente para o outro.",
+"Port Vell":"O porto antigo foi reformado para as Olimpíadas de 1992 e hoje tem passeios e o Maremagnum.",
+"Barceloneta":"Bairro de pescadores cuja praia foi renovada para as Olimpíadas de 1992.",
+"Montjuïc":"A colina sediou a Exposição Internacional de 1929 e as Olimpíadas de 1992.",
+"Fonte Mágica":"O show de água, luz e música vem da Exposição de 1929 e continua um dos mais queridos da cidade.",
+"Mosteiro de Montserrat":"Abriga a Virgem Negra, La Moreneta, padroeira da Catalunha, e um dos mais antigos corais de meninos da Europa.",
+"Funicular de Sant Joan":"Mont serrat significa montanha serrilhada, por causa dos picos rochosos que se veem daqui.",
+"Sagrada Família":"Obra iniciada em 1882 e ainda em construção. Gaudí morreu em 1926, atropelado por um bonde.",
+"Hospital de Sant Pau":"Complexo modernista de Domènech i Montaner, Patrimônio da UNESCO, que funcionou como hospital até 2009.",
+"Park Güell":"Foi planejado como condomínio de luxo, que não vingou. O lagarto de mosaicos é o símbolo do parque.",
+"Casa Batlló":"A fachada lembra o dragão morto por São Jorge, com o telhado como a espinha do bicho.",
+"La Pedrera":"Chamada de pedreira pela fachada ondulada de pedra. As chaminés do terraço parecem guerreiros.",
+"Passeig de Gràcia":"Avenida com obras-primas do modernismo catalão, como a Quadra da Discórdia.",
+"Catalunya":"A Plaça de Catalunya é o centro da cidade e liga as Ramblas ao Passeig de Gràcia.",
+"Arc de Triomf":"Arco de tijolos em estilo mudéjar, feito para a Exposição Universal de 1888.",
+"Ciutadella":"O parque tem uma cascata monumental para a qual Gaudí, ainda estudante, ajudou no projeto.",
+"El Born":"O antigo mercado virou centro cultural, com ruínas de casas de 1700 sob o piso.",
+"Santa Maria del Mar":"Igreja gótica erguida em cerca de 55 anos, em grande parte por moradores do bairro.",
+"Museu Picasso":"Guarda milhares de obras da juventude de Picasso, artista que viveu em Barcelona.",
+"Plaça d'Espanya":"As duas torres venezianas marcam o início da avenida da Exposição de 1929. A antiga arena virou shopping.",
+"Aqueduto":"Romano, do séc. I, tem cerca de 167 arcos de granito e foi montado sem argamassa.",
+"Plaza Mayor@Segóvia":"Cercada de arcadas, é o centro da vida da cidade, ao lado da catedral.",
+"Catedral@Segóvia":"É considerada a dama das catedrais e uma das últimas grandes catedrais góticas da Espanha.",
+"Alcázar@Segóvia":"Diz-se que inspirou o castelo da Branca de Neve, da Disney. Suas torres têm telhados de ardósia."
+};
+const norm=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+const CURN={};Object.keys(CUR).forEach(k=>CURN[norm(k)]=[k.split("@")[0],CUR[k]]);
+function curItems(name,city){
+ return name.split(/\s*(?:→|•|\/)\s*/).map(pt=>CURN[norm(pt)+"@"+norm(city)]||CURN[norm(pt)]).filter(Boolean);
+}
+function curBtn(name,city){return curItems(name,city).length?`<a href="#" onclick="toggleCur(this);return false">💡 Curiosidades</a>`:""}
+function curBox(name,city){const it=curItems(name,city);return it.length?`<div class="cur">${it.map(c=>`<p><b>${c[0]}</b>${c[1]}</p>`).join("")}</div>`:""}
+function toggleCur(a){const box=a.closest(".stop").querySelector(".cur");const o=box.classList.toggle("open");a.textContent=o?"💡 Ocultar":"💡 Curiosidades"}
+daysEl.innerHTML=days.map((d,i)=>`
+<section class="day ${i===0?'active':''}" id="day-${i}">
+<div class="daytop">
+<div><div class="date">${d[0]} • ${d[1]}</div><h2>${d[2]}</h2><div class="photo" style="background-image:url('${photos[d[3]]}')"></div></div>
+<div>
+<div class="card weather"><b>🌦️ Previsão online — ${d[3]}</b><div id="weather-day-${i}">Carregando...</div></div>
+<div class="card" style="margin-top:14px"><b>📍 Abrir cidade no Google Maps</b><div class="actions"><a target="_blank" href="${maps(d[3])}">Abrir Maps</a></div></div>
+</div>
+</div>
+<div class="card"><div class="timeline">${d[4].map(x=>`<div class="stop"><div class="time">${x[0]}</div><div><h3>${x[1]}</h3><p>${x[2]}</p><div class="actions"><a target="_blank" href="${maps(x[1]+" "+d[1])}">📍 Maps</a><a target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(x[1]+" "+d[1])}">🚶 Rota</a>${curBtn(x[1],d[3])}</div>${curBox(x[1],d[3])}</div></div>`).join("")}</div></div>
+</section>`).join("");
+function showDay(i){document.querySelectorAll(".day").forEach((e,j)=>e.classList.toggle("active",j===i));document.querySelectorAll("nav button").forEach((e,j)=>e.classList.toggle("active",j===i));activeDay=i;loadWeather(i);window.scrollTo({top:document.querySelector("nav").offsetTop,behavior:"smooth"})}
+
+const checklist=["Passaporte","Seguro-viagem impresso + digital","Cartões (Nomad/Avenue)","€200 em espécie","Cópias/fotos dos documentos","Voucher de hotéis e transportes","6–8 camisetas","2–3 blusas manga longa","1–2 blusas quentes","Jaqueta corta-vento/impermeável","Casaco médio","3 calças","Tênis confortável","Botinha/sapato fechado","Chinelo","Guarda-chuva compacto","Óculos de sol","Canguru + carrinho da Bella","Farmacinha + band-aid","Mantinha leve","Lanchinhos e sucos","Carregador + power bank","Adaptador europeu","Fone de ouvido"];
+document.getElementById("checklist").innerHTML=checklist.map((x,i)=>`<label><input type="checkbox" data-k="${i}">${x}</label>`).join("");
+document.querySelectorAll(".check input").forEach(el=>{el.checked=localStorage.getItem("euro-"+el.dataset.k)==="1";el.onchange=()=>localStorage.setItem("euro-"+el.dataset.k,el.checked?"1":"0")});
+const costs=[["Palácio Real Madrid","14"],["Catedral Primada Toledo","12"],["Igreja Santo Tomé","3"],["Quinta da Regaleira","12"],["Palácio da Pena","20"],["Hop-on Hop-off Sintra","13,50"],["Sagrada Família","26"],["Park Güell","10"],["Montserrat","30"],["Elevador Santa Justa","5,40"],["Torre dos Clérigos","6"],["Palácio da Bolsa","10"],["Disneyland Paris","90"],["Louvre (opcional)","22"],["Casa de Anne Frank","16,50"],["Passeio de barco Amsterdam","20"],["Heineken Experience","23"]];
+const eurNum=v=>parseFloat(v.replace(",","."));
+const brl=n=>n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+let fx=null;
+function renderCosts(){
+ document.getElementById("costs").innerHTML=costs.map(x=>`<tr><td>${x[0]}</td><td>€${x[1]}</td><td>${fx?brl(eurNum(x[1])*fx.rate):"—"}</td></tr>`).join("");
+ const el=document.getElementById("fxInfo");
+ el.innerHTML=fx?`Cotação: <b>1 € = ${brl(fx.rate)}</b> · atualizada às ${hhmm(fx.t)} · <a href="#" onclick="loadFx();return false">🔄 atualizar agora</a>`
+  :`Não foi possível obter a cotação. <a href="#" onclick="loadFx();return false">Tentar de novo</a>`;
+}
+async function loadFx(){
+ let rate=null;
+ try{const r=await getJson("https://economia.awesomeapi.com.br/json/last/EUR-BRL");rate=parseFloat(r.EURBRL.bid)}catch(e){}
+ if(!(rate>0)){try{const r=await getJson("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=BRL");rate=r.rates.BRL}catch(e){}}
+ if(rate>0)fx={rate,t:Date.now()};
+ renderCosts();
+}
+renderCosts();loadFx();
+setInterval(loadFx,5*60*1000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)loadFx()});
+window.addEventListener("online",loadFx);
+const hotels=[["Madri","02–05/10","Hotel Madrid Río"],["Lisboa","05–09/10","Central & Spacious 3BD in Lisbon"],["Porto","09–11/10","São Miminho 3º"],["Paris","11–14/10","Les Lilas Serviced Apartments"],["Amsterdam","14–15/10","Hotel Library Amsterdam"],["Barcelona","15–18/10","Hostal Bedmates"],["Madri","18–19/10","The Central House Madrid Lavapiés"]];
+document.getElementById("hotels").innerHTML=hotels.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td></tr>`).join("");
+loadWeather(0);loadGlobal();startAutoRefresh();
+
+/* ===== Restaurantes perto de mim ===== */
+const GOOGLE_PLACES_KEY=""; /* opcional: cole aqui uma chave da Google Places API (New) para notas e preços reais */
+const rest={list:[],sort:"dist"};
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function hav(a,b,c,d){const t=x=>x*Math.PI/180,h=Math.sin(t(c-a)/2)**2+Math.cos(t(a))*Math.cos(t(c))*Math.sin(t(d-b)/2)**2;return 12742000*Math.asin(Math.sqrt(h))}
+function osmItem(e,lat,lon){
+ const t=e.tags||{}; if(!t.name)return null;
+ const la=e.lat??(e.center&&e.center.lat),lo=e.lon??(e.center&&e.center.lon); if(la==null)return null;
+ const cu=(t.cuisine||"").toLowerCase();
+ let price=t.amenity==="restaurant"?2:1;
+ if(/kebab|sandwich|burger|pizza|street_food|ice_cream|coffee|bakery/.test(cu))price=1;
+ if(/fine_dining|michelin/.test(cu)||Object.keys(t).some(k=>/michelin/.test(k)))price=3;
+ const score=(t.website||t["contact:website"]?1:0)+(t.opening_hours?1:0)+(t.phone||t["contact:phone"]?1:0)+(cu?1:0)+(t.wikidata?2:0)+(t["addr:street"]?.5:0);
+ return{name:t.name,type:cu?cu.split(";")[0].replace(/_/g," "):({restaurant:"restaurante",fast_food:"fast food",cafe:"café"})[t.amenity]||"",lat:la,lon:lo,dist:hav(lat,lon,la,lo),price,rating:null,n:0,score,addr:[t["addr:street"],t["addr:housenumber"]].filter(Boolean).join(", ")};
+}
+async function fetchOsm(lat,lon,r){
+ const q=`[out:json][timeout:25];nwr(around:${r},${lat},${lon})[amenity~"^(restaurant|fast_food|cafe)$"][name];out center 200;`;
+ let err;
+ for(const u of ["https://overpass-api.de/api/interpreter","https://overpass.kumi.systems/api/interpreter"]){
+  try{const x=await getJson(u+"?data="+encodeURIComponent(q));return x.elements.map(e=>osmItem(e,lat,lon)).filter(Boolean)}catch(e){err=e}
+ }
+ throw err;
+}
+async function fetchGoogle(lat,lon,r){
+ const res=await fetch("https://places.googleapis.com/v1/places:searchNearby",{method:"POST",headers:{"Content-Type":"application/json","X-Goog-Api-Key":GOOGLE_PLACES_KEY,"X-Goog-FieldMask":"places.displayName,places.rating,places.userRatingCount,places.priceLevel,places.location,places.formattedAddress,places.primaryTypeDisplayName"},body:JSON.stringify({includedTypes:["restaurant"],maxResultCount:20,languageCode:"pt-BR",locationRestriction:{circle:{center:{latitude:lat,longitude:lon},radius:Math.min(r,50000)}}})});
+ if(!res.ok)throw new Error("Google HTTP "+res.status);
+ const x=await res.json(),pl={PRICE_LEVEL_FREE:0,PRICE_LEVEL_INEXPENSIVE:1,PRICE_LEVEL_MODERATE:2,PRICE_LEVEL_EXPENSIVE:3,PRICE_LEVEL_VERY_EXPENSIVE:4};
+ return(x.places||[]).map(p=>({name:p.displayName.text,type:(p.primaryTypeDisplayName&&p.primaryTypeDisplayName.text)||"restaurante",lat:p.location.latitude,lon:p.location.longitude,dist:hav(lat,lon,p.location.latitude,p.location.longitude),price:pl[p.priceLevel]??null,rating:p.rating??null,n:p.userRatingCount||0,score:0,addr:p.formattedAddress||""}));
+}
+const qual=x=>x.rating!=null?x.rating*Math.log10(x.n+10):x.score;
+function sortRest(l,k){
+ const a=[...l];
+ if(k==="dist")a.sort((x,y)=>x.dist-y.dist);
+ else if(k==="cheap")a.sort((x,y)=>(x.price??9)-(y.price??9)||x.dist-y.dist);
+ else a.sort((x,y)=>qual(y)-qual(x)||x.dist-y.dist);
+ return a;
+}
+function setSort(k){
+ rest.sort=k;
+ document.querySelectorAll("#rSort .fbtn").forEach(b=>b.classList.toggle("on",b.dataset.k===k));
+ renderRest();
+}
+function renderRest(){
+ const out=document.getElementById("restList");
+ if(!rest.list.length){out.innerHTML="Nenhum restaurante encontrado nesse raio. Tente aumentar a distância.";return}
+ out.innerHTML=sortRest(rest.list,rest.sort).slice(0,30).map(x=>{
+  const d=x.dist<1000?Math.round(x.dist)+" m":(x.dist/1000).toFixed(1).replace(".",",")+" km";
+  const pr=x.price==null?"":x.price===0?"Grátis":"€".repeat(x.price);
+  const q=x.rating!=null?`⭐ ${x.rating.toFixed(1).replace(".",",")} (${x.n})`:"●".repeat(Math.min(5,Math.max(1,Math.round(x.score))))+" estimada";
+  return `<div class="stop"><div class="time">📏 ${d}</div><div><b>${esc(x.name)}</b><div class="small">${esc(x.type)} · ${pr?pr+" · ":""}${q}${x.addr?" · "+esc(x.addr):""}</div>
+<div class="actions"><a href="https://www.google.com/maps/dir/?api=1&destination=${x.lat},${x.lon}" target="_blank" rel="noopener">🚶 Rota</a><a href="${maps(x.name+" "+x.lat+","+x.lon)}" target="_blank" rel="noopener">📍 Ver no mapa</a></div></div></div>`;
+ }).join("");
+}
+async function loadRest(){
+ const out=document.getElementById("restList"),o=document.getElementById("rOrigin").value,r=+document.getElementById("rRadius").value;
+ out.innerHTML="Buscando restaurantes...";
+ try{
+  let lat,lon;
+  if(o==="gps"){
+   const p=await new Promise((ok,no)=>{
+    if(!navigator.geolocation)return no(new Error("seu navegador não tem geolocalização"));
+    navigator.geolocation.getCurrentPosition(ok,e=>no(new Error(e.code===1?"permissão de localização negada — libere no navegador ou escolha uma cidade do roteiro":"não consegui obter sua localização")),{enableHighAccuracy:true,timeout:15000,maximumAge:60000});
+   });
+   lat=p.coords.latitude;lon=p.coords.longitude;
+  }else{lat=places[o][0];lon=places[o][1]}
+  rest.list=GOOGLE_PLACES_KEY?await fetchGoogle(lat,lon,r):await fetchOsm(lat,lon,r);
+  document.getElementById("restNote").textContent=GOOGLE_PLACES_KEY?`Dados do Google Places · atualizado às ${hhmm(Date.now())}`:`Dados do OpenStreetMap · atualizado às ${hhmm(Date.now())}. Sem notas de clientes: o preço (€) é estimado pelo tipo de lugar e a qualidade (●) pela quantidade de informação cadastrada.`;
+  renderRest();
+ }catch(e){out.innerHTML=`Não foi possível buscar (${esc(e.message)}). <a href="#" onclick="loadRest();return false">Tentar de novo</a>`}
+}
+Object.keys(places).forEach(n=>document.getElementById("rOrigin").insertAdjacentHTML("beforeend",`<option value="${esc(n)}">🏙️ ${esc(n)}</option>`));
+</script>
+</body></html>
